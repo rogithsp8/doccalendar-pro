@@ -6,7 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-export const DoctorSearch = ({ onLogout }) => {
+interface DoctorSearchProps {
+  onLogout: () => void;
+}
+
+export const DoctorSearch = ({ onLogout }: DoctorSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecialty, setSelectedSpecialty] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
@@ -110,12 +114,12 @@ export const DoctorSearch = ({ onLogout }) => {
     return matchesSearch && matchesSpecialty && matchesLocation;
   });
 
-  const handleBookAppointment = (doctorId) => {
+  const handleBookAppointment = (doctorId: string) => {
     console.log('Booking appointment with doctor:', doctorId);
     // In a real app, this would navigate to booking form
   };
 
-  const handleViewProfile = (doctorId) => {
+  const handleViewProfile = (doctorId: string) => {
     console.log('Viewing doctor profile:', doctorId);
     // In a real app, this would navigate to doctor profile
   };

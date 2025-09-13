@@ -5,7 +5,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
-export const RegisterForm = ({ onRegister, onSwitchToLogin }) => {
+interface RegisterFormProps {
+  onRegister: (name: string, email: string, password: string) => void;
+  onSwitchToLogin: () => void;
+}
+
+export const RegisterForm = ({ onRegister, onSwitchToLogin }: RegisterFormProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +18,7 @@ export const RegisterForm = ({ onRegister, onSwitchToLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (password !== confirmPassword) {

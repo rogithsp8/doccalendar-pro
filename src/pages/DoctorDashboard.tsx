@@ -6,7 +6,11 @@ import { Calendar, Clock, Users, CheckCircle, XCircle, AlertCircle } from 'lucid
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-export const DoctorDashboard = ({ onLogout }) => {
+interface DoctorDashboardProps {
+  onLogout: () => void;
+}
+
+export const DoctorDashboard = ({ onLogout }: DoctorDashboardProps) => {
   // Mock data for doctor
   const appointments = [
     {
@@ -15,7 +19,7 @@ export const DoctorDashboard = ({ onLogout }) => {
       date: '2024-01-15',
       time: '10:00 AM',
       reason: 'Regular checkup and heart monitoring',
-      status: 'PENDING'
+      status: 'PENDING' as const
     },
     {
       id: 'apt-002',
@@ -23,7 +27,7 @@ export const DoctorDashboard = ({ onLogout }) => {
       date: '2024-01-15',
       time: '11:30 AM',
       reason: 'Follow-up consultation for chest pain',
-      status: 'PENDING'
+      status: 'PENDING' as const
     },
     {
       id: 'apt-003',
@@ -31,7 +35,7 @@ export const DoctorDashboard = ({ onLogout }) => {
       date: '2024-01-14',
       time: '2:00 PM',
       reason: 'Cardiac stress test results review',
-      status: 'APPROVED'
+      status: 'APPROVED' as const
     },
     {
       id: 'apt-004',
@@ -39,7 +43,7 @@ export const DoctorDashboard = ({ onLogout }) => {
       date: '2024-01-14',
       time: '3:30 PM',
       reason: 'Blood pressure medication adjustment',
-      status: 'APPROVED'
+      status: 'APPROVED' as const
     },
     {
       id: 'apt-005',
@@ -47,7 +51,7 @@ export const DoctorDashboard = ({ onLogout }) => {
       date: '2024-01-13',
       time: '9:00 AM',
       reason: 'Emergency consultation for chest pain',
-      status: 'REJECTED'
+      status: 'REJECTED' as const
     }
   ];
 
@@ -57,12 +61,12 @@ export const DoctorDashboard = ({ onLogout }) => {
   );
   const totalPatients = new Set(appointments.map(apt => apt.patientName)).size;
 
-  const handleApproveAppointment = (id) => {
+  const handleApproveAppointment = (id: string) => {
     console.log('Approving appointment:', id);
     // In a real app, this would make an API call
   };
 
-  const handleRejectAppointment = (id) => {
+  const handleRejectAppointment = (id: string) => {
     console.log('Rejecting appointment:', id);
     // In a real app, this would make an API call
   };

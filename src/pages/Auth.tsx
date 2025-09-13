@@ -3,15 +3,19 @@ import { LoginForm } from '@/components/auth/LoginForm';
 import { RegisterForm } from '@/components/auth/RegisterForm';
 import { Heart, Users, Calendar, Shield } from 'lucide-react';
 
-export const Auth = ({ onLogin }) => {
+interface AuthProps {
+  onLogin: (email: string, password: string, role: string) => void;
+}
+
+export const Auth = ({ onLogin }: AuthProps) => {
   const [isLogin, setIsLogin] = useState(true);
 
-  const handleLogin = (email, password, role) => {
+  const handleLogin = (email: string, password: string, role: string) => {
     // In a real app, this would validate against an API
     onLogin(email, password, role);
   };
 
-  const handleRegister = (name, email, password) => {
+  const handleRegister = (name: string, email: string, password: string) => {
     // In a real app, this would create a new user via API
     onLogin(email, password, 'PATIENT');
   };

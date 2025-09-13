@@ -6,14 +6,19 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-export const LoginForm = ({ onLogin, onSwitchToRegister }) => {
+interface LoginFormProps {
+  onLogin: (email: string, password: string, role: string) => void;
+  onSwitchToRegister: () => void;
+}
+
+export const LoginForm = ({ onLogin, onSwitchToRegister }: LoginFormProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('PATIENT');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     

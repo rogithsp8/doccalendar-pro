@@ -1,3 +1,17 @@
+import { LucideIcon } from 'lucide-react';
+
+interface DashboardMetricProps {
+  title: string;
+  value: string | number;
+  icon: LucideIcon;
+  description?: string;
+  trend?: {
+    value: number;
+    isPositive: boolean;
+  };
+  color?: 'primary' | 'secondary' | 'wellness' | 'accent';
+}
+
 export const DashboardMetric = ({ 
   title, 
   value, 
@@ -5,7 +19,7 @@ export const DashboardMetric = ({
   description, 
   trend, 
   color = 'primary' 
-}) => {
+}: DashboardMetricProps) => {
   const colorClasses = {
     primary: 'from-primary to-primary-dark',
     secondary: 'from-secondary to-secondary',

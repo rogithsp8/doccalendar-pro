@@ -1,14 +1,31 @@
 import { Calendar, Clock, User, Stethoscope, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+interface AppointmentCardProps {
+  appointment: {
+    id: string;
+    patientName?: string;
+    doctorName?: string;
+    doctorSpecialization?: string;
+    date: string;
+    time: string;
+    reason: string;
+    status: 'PENDING' | 'APPROVED' | 'REJECTED' | 'CANCELLED';
+  };
+  userRole: 'PATIENT' | 'DOCTOR' | 'ADMIN';
+  onApprove?: (id: string) => void;
+  onReject?: (id: string) => void;
+  onCancel?: (id: string) => void;
+}
+
 export const AppointmentCard = ({ 
   appointment, 
   userRole, 
   onApprove, 
   onReject, 
   onCancel 
-}) => {
-  const getStatusBadge = (status) => {
+}: AppointmentCardProps) => {
+  const getStatusBadge = (status: string) => {
     switch (status) {
       case 'PENDING':
         return <span className="status-badge-pending">Pending</span>;
@@ -23,7 +40,7 @@ export const AppointmentCard = ({
     }
   };
 
-  const getStatusIcon = (status) => {
+  const getStatusIcon = (status: string) => {
     switch (status) {
       case 'PENDING':
         return <AlertCircle className="h-4 w-4 text-warning" />;

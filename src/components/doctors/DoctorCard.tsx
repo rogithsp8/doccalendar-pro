@@ -1,7 +1,24 @@
 import { MapPin, Clock, Star, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export const DoctorCard = ({ doctor, onBookAppointment, onViewProfile }) => {
+interface DoctorCardProps {
+  doctor: {
+    id: string;
+    name: string;
+    specialization: string;
+    clinicName: string;
+    location?: string;
+    rating?: number;
+    experience?: string;
+    availableToday?: boolean;
+    nextAvailable?: string;
+    image?: string;
+  };
+  onBookAppointment: (doctorId: string) => void;
+  onViewProfile: (doctorId: string) => void;
+}
+
+export const DoctorCard = ({ doctor, onBookAppointment, onViewProfile }: DoctorCardProps) => {
   return (
     <div className="doctor-card group">
       <div className="flex items-start space-x-4">
