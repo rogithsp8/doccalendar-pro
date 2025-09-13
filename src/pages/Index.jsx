@@ -4,23 +4,15 @@ import { PatientDashboard } from './PatientDashboard';
 import { DoctorDashboard } from './DoctorDashboard';
 import { DoctorSearch } from './DoctorSearch';
 
-type UserRole = 'PATIENT' | 'DOCTOR' | 'ADMIN' | null;
-
-interface User {
-  email: string;
-  role: UserRole;
-  name: string;
-}
-
 const Index = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [currentPage, setCurrentPage] = useState<string>('dashboard');
+  const [user, setUser] = useState(null);
+  const [currentPage, setCurrentPage] = useState('dashboard');
 
-  const handleLogin = (email: string, password: string, role: string) => {
+  const handleLogin = (email, password, role) => {
     // In a real app, this would validate credentials with an API
-    const userData: User = {
+    const userData = {
       email,
-      role: role as UserRole,
+      role,
       name: role === 'DOCTOR' ? 'Dr. Sarah Johnson' : 
             role === 'ADMIN' ? 'Admin User' : 'John Doe'
     };

@@ -9,13 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-interface HeaderProps {
-  userRole?: 'PATIENT' | 'DOCTOR' | 'ADMIN';
-  userName?: string;
-  onLogout?: () => void;
-}
-
-export const Header = ({ userRole, userName, onLogout }: HeaderProps) => {
+export const Header = ({ userRole, userName, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

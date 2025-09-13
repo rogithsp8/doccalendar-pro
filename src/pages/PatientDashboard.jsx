@@ -6,11 +6,7 @@ import { Calendar, Clock, CheckCircle, Plus, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
-interface PatientDashboardProps {
-  onLogout: () => void;
-}
-
-export const PatientDashboard = ({ onLogout }: PatientDashboardProps) => {
+export const PatientDashboard = ({ onLogout }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Mock data
@@ -22,7 +18,7 @@ export const PatientDashboard = ({ onLogout }: PatientDashboardProps) => {
       date: '2024-01-15',
       time: '10:00 AM',
       reason: 'Regular checkup and heart monitoring',
-      status: 'APPROVED' as const
+      status: 'APPROVED'
     },
     {
       id: 'apt-002',
@@ -31,7 +27,7 @@ export const PatientDashboard = ({ onLogout }: PatientDashboardProps) => {
       date: '2024-01-18',
       time: '2:30 PM',
       reason: 'Skin rash examination',
-      status: 'PENDING' as const
+      status: 'PENDING'
     },
     {
       id: 'apt-003',
@@ -40,7 +36,7 @@ export const PatientDashboard = ({ onLogout }: PatientDashboardProps) => {
       date: '2024-01-12',
       time: '9:00 AM',
       reason: 'Annual physical examination',
-      status: 'APPROVED' as const
+      status: 'APPROVED'
     }
   ];
 
@@ -50,7 +46,7 @@ export const PatientDashboard = ({ onLogout }: PatientDashboardProps) => {
 
   const pendingAppointments = appointments.filter(apt => apt.status === 'PENDING');
 
-  const handleCancelAppointment = (id: string) => {
+  const handleCancelAppointment = (id) => {
     console.log('Cancelling appointment:', id);
     // In a real app, this would make an API call
   };
