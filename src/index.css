@@ -2,57 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Healthcare Appointment Management System Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Healthcare Primary Palette */
+    --background: 210 25% 98%;
+    --foreground: 215 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Medical Blue Primary */
+    --primary: 212 95% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 212 95% 85%;
+    --primary-dark: 212 95% 35%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Healing Green Secondary */
+    --secondary: 152 75% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 152 75% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Trust Purple Accent */
+    --accent: 258 90% 68%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 258 90% 88%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Warm Orange for Wellness */
+    --wellness: 24 95% 60%;
+    --wellness-foreground: 0 0% 100%;
+    --wellness-light: 24 95% 88%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Professional Grays */
+    --muted: 210 25% 96%;
+    --muted-foreground: 215 15% 45%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 25% 88%;
+    --input: 210 25% 94%;
+    --ring: 212 95% 48%;
 
-    --radius: 0.5rem;
+    /* Status Colors */
+    --success: 152 75% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 100% 55%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --sidebar-background: 0 0% 98%;
+    /* Healthcare Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(212, 95%, 48%), hsl(212, 95%, 35%));
+    --gradient-secondary: linear-gradient(135deg, hsl(152, 75%, 45%), hsl(152, 75%, 35%));
+    --gradient-wellness: linear-gradient(135deg, hsl(24, 95%, 60%), hsl(24, 95%, 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(212, 95%, 48%), hsl(258, 90%, 68%));
+    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(210, 25%, 98%));
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsl(215, 25%, 85%);
+    --shadow-medium: 0 4px 16px hsl(215, 25%, 80%);
+    --shadow-strong: 0 8px 32px hsl(215, 25%, 75%);
+    --shadow-glow: 0 0 20px hsl(212, 95%, 85%);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
 
   .dark {
@@ -100,6 +118,71 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
   }
+
+  /* Custom Healthcare Components */
+  .healthcare-card {
+    @apply bg-card border border-border rounded-lg shadow-[var(--shadow-soft)] transition-all duration-300 hover:shadow-[var(--shadow-medium)];
+  }
+
+  .healthcare-button-primary {
+    @apply bg-[var(--gradient-primary)] text-primary-foreground rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:shadow-[var(--shadow-glow)] hover:scale-105 active:scale-95;
+  }
+
+  .healthcare-button-secondary {
+    @apply bg-[var(--gradient-secondary)] text-secondary-foreground rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:shadow-[var(--shadow-medium)] hover:scale-105 active:scale-95;
+  }
+
+  .healthcare-button-wellness {
+    @apply bg-[var(--gradient-wellness)] text-wellness-foreground rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:shadow-[var(--shadow-medium)] hover:scale-105 active:scale-95;
+  }
+
+  .status-badge-pending {
+    @apply bg-[hsl(var(--warning))] text-warning-foreground px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .status-badge-approved {
+    @apply bg-[hsl(var(--success))] text-success-foreground px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .status-badge-rejected {
+    @apply bg-[hsl(var(--destructive))] text-destructive-foreground px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .gradient-text-primary {
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent;
+  }
+
+  .floating-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
+
+@layer components {
+  .dashboard-metric-card {
+    @apply healthcare-card p-6 text-center hover:scale-105 cursor-pointer;
+  }
+
+  .appointment-card {
+    @apply healthcare-card p-4 border-l-4 border-l-[hsl(var(--primary))];
+  }
+
+  .doctor-card {
+    @apply healthcare-card p-6 hover:border-[hsl(var(--primary))] transition-all duration-300;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px hsl(var(--primary) / 0.5); }
+  50% { box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.6); }
 }
